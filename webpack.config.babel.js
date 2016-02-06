@@ -72,8 +72,8 @@ const devConfiguration = {
 
 if (TARGET === 'start' || !TARGET) {
     module.exports = merge(common, devConfiguration);
-};
+}
 
 if (TARGET === 'build') {
     module.exports = merge(common, {});
-};
+}
