@@ -1,0 +1,9 @@
+body {
+  background: #eee;
+  font-family: sans-serif;
+  padding: 5px;
+}
+
+.timeElapsed {
+  font-weight: bold;
+}
