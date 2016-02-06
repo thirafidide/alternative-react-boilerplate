@@ -9,65 +9,78 @@ const TARGET = process.env.npm_lifecycle_event;
 process.env.BABEL_ENV = TARGET;
 
 const PATHS = {
-    app: path.join(__dirname, 'app'),
-    build: path.join(__dirname, 'build')
+  app: path.join(__dirname, 'app'),
+  build: path.join(__dirname, 'build')
 };
 
 const common = {
-    entry: PATHS.app,
-    output: {
-        path: PATHS.build,
-        filename: 'bundle.js'
-    },
+  entry: PATHS.app,
+  output: {
+      path: PATHS.build,
+      filename: 'bundle.js'
+  },
 
-    resolve: {
-        extensions: ['', '.js', '.jsx']
-    },
-    module: {
-      preLoaders: [
+  resolve: {
+      extensions: ['', '.js', '.jsx']
+  },
+  module: {
+    preLoaders: [
+      {
+        test: /\.jsx?$/,
+        loaders: ['eslint'],
+        include: PATHS.app
+      }
+    ],
+    loaders: [
         {
-          test: /\.jsx?$/,
-          loaders: ['eslint'],
-          include: PATHS.app
+            test: /\.css$/,
+            loaders: ['style', 'css'],
+            include: PATHS.app
+        },
+        {
+            test: /\.jsx?$/,
+            loaders: ['babel?cacheDirectory'],
+            include: PATHS.app
         }
-      ],
-      loaders: [
-          {
-              test: /\.css$/,
-              loaders: ['style', 'css'],
-              include: PATHS.app
-          },
-          {
-              test: /\.jsx?$/,
-              loaders: ['babel?cacheDirectory'],
-              include: PATHS.app
-          }
-      ]
-    }
+    ]
+  }
 };
 
 const devConfiguration = {
-    devServer: {
-      contentBase: PATHS.build,
+  devServer: {
+    contentBase: PATHS.build,
 
-      // Enable history API fallback so HTML5 History API based
-      // routing works. This is a good default that will come
-      // in handy in more complicated setups.
-      historyApiFallback: true,
-      inline: true,
-      progress: true,
+    // Enable history API fallback so HTML5 History API based
+    // routing works. This is a good default that will come
+    // in handy in more complicated setups.
+    historyApiFallback: true,
+    inline: true,
+    progress: true,
 
-      // Display only errors to reduce the amount of output.
-      stats: 'errors-only',
+    // Display only errors to reduce the amount of output.
+    stats: 'errors-only',
 
-      // Parse host and port from env so this is easy to customize.
-      host: process.env.HOST,
-      port: process.env.PORT
-    },
-    devtool: 'eval-source-map',
-    plugins: [
-      new webpack.HotModuleReplacementPlugin()
-    ]
+    // Parse host and port from env so this is easy to customize.
+    host: process.env.HOST,
+    port: process.env.PORT
+  },
+  devtool: 'eval-source-map',
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ]
+};
+
+const prodConfiguration = {
+  plugins: [
+    new webpack.DefinePlugin({
+       'process.env.NODE_ENV': JSON.stringify('production')
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false
+      }
+    })
+  ]
 };
 
 if (TARGET === 'start' || !TARGET) {
@@ -75,5 +88,5 @@ if (TARGET === 'start' || !TARGET) {
 }
 
 if (TARGET === 'build') {
-    module.exports = merge(common, {});
+    module.exports = merge(common, prodConfiguration);
 }
