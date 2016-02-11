@@ -1,7 +1,7 @@
 import React from 'react';
 import TimeElapsed from '../components/TimeElapsed';
 
-export default class App extends React.Component {
+export default class IndexView extends React.Component {
   render() {
     return (
       <div>
