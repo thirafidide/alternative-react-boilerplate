@@ -1,5 +1,5 @@
 import React from 'react';
-import TimeElapsed from './TimeElapsed';
+import TimeElapsed from '../components/TimeElapsed';
 
 export default class App extends React.Component {
   render() {
