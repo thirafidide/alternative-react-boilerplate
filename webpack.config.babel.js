@@ -1,6 +1,9 @@
 import path from 'path';
 import webpack from 'webpack';
 import merge from 'webpack-merge';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+
+import pkg from './package.json';
 
 import es6promise from 'es6-promise';
 es6promise.polyfill();
@@ -14,7 +17,9 @@ const PATHS = {
 };
 
 const common = {
-  entry: PATHS.app,
+  entry: {
+    app: PATHS.app
+  },
   output: {
       path: PATHS.build,
       filename: 'bundle.js'
@@ -43,7 +48,15 @@ const common = {
             include: PATHS.app
         }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'node_modules/html-webpack-template/index.ejs',
+      title: 'Kanban app',
+      appMountId: 'app',
+      inject: false
+    })
+  ]
 };
 
 const devConfiguration = {
@@ -71,7 +84,23 @@ const devConfiguration = {
 };
 
 const prodConfiguration = {
+  entry: {
+    vendor: Object.keys(pkg.dependencies).filter(function(v) {
+      // Exclude alt-utils as it won't work with this setup
+      // due to the way the package has been designed
+      // (no package.json main).
+      return v !== 'alt-utils';
+    })
+  },
+  output: {
+    path: PATHS.build,
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[chunkhash].js'
+  },
   plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor', 'manifest']
+    }),
     new webpack.DefinePlugin({
        'process.env.NODE_ENV': JSON.stringify('production')
     }),

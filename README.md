@@ -28,6 +28,6 @@ npm run build
 ```
 
 ## To Do
-* Separating vendor and main app bundle
+* Separating css for production
 * Better Readme, Introduction, and Documentation
 * Finish this To Do :p

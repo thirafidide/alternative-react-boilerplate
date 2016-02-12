@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "start": "webpack-dev-server",
+    "start": "rm -rf ./build/ | webpack-dev-server",
     "lint": "eslint . --ext .js --ext .jsx || true"
   },
   "author": "",
@@ -28,7 +28,9 @@
     "babel-eslint": "~4.1.8",
     "eslint-loader": "~1.2.1",
     "babel-preset-react-hmre": "~1.0.1",
-    "babel-preset-stage-1": "~6.3.13"
+    "babel-preset-stage-1": "~6.3.13",
+    "html-webpack-plugin": "~2.8.1",
+    "html-webpack-template": "~4.0.0"
   },
   "dependencies": {
     "react-dom": "~0.14.7",
