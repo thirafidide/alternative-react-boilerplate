@@ -9,7 +9,8 @@ export default class TimeElapsed extends React.Component {
 
     this.state = TimeStore.getState();
 
-    setTimeout(this.timeIncrement.bind(this), 1000);
+    if (!TimeStore.getState().counterStarted)
+      setTimeout(this.timeIncrement.bind(this), 1000);
   }
 
   componentDidMount()     { TimeStore.listen(this.storeChanged.bind(this)); }
@@ -27,6 +28,9 @@ export default class TimeElapsed extends React.Component {
   }
 
   timeIncrement() {
+    if (!TimeStore.getState().counterStarted)
+      TimeActions.startCounter();
+
     TimeActions.increment();
     setTimeout(this.timeIncrement.bind(this), 1000);
   }

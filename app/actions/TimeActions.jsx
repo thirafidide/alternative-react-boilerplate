@@ -1,3 +1,6 @@
 import alt from '../libs/alt';
 
-export default alt.generateActions('increment');
+export default alt.generateActions(
+  'increment',
+  'startCounter'
+);

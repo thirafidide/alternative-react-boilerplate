@@ -6,12 +6,19 @@ class TimeStore {
     this.bindActions(TimeActions);
 
     this.timeElapsed = 0;
+    this.counterStarted = false;
   }
 
   increment() {
     const timeElapsed = this.timeElapsed + 1;
 
     this.setState({timeElapsed});
+  }
+
+  startCounter() {
+    const counterStarted = true;
+
+    this.setState({counterStarted});
   }
   
 }
