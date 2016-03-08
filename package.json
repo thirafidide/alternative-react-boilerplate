@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "eslint . --ext .js --ext .jsx || true",
+    "test": "eslint . --ext .js --ext .jsx",
     "build": "rm -rf ./build/ | webpack",
     "start": "webpack-dev-server",
-    "lint": "eslint . --ext .js --ext .jsx || true"
+    "lint": "eslint . --ext .js --ext .jsx"
   },
   "author": "",
   "license": "BSD-2-Clause",
