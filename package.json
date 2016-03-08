@@ -1,7 +1,7 @@
 {
   "name": "alternative-react-boilerplate",
-  "version": "0.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "alternative boilerplate for webpack-babel-react-alt combo",
   "main": "index.js",
   "scripts": {
     "test": "eslint . --ext .js --ext .jsx",
@@ -9,7 +9,7 @@
     "start": "webpack-dev-server",
     "lint": "eslint . --ext .js --ext .jsx"
   },
-  "author": "",
+  "author": "Thirafi Dide",
   "license": "BSD-2-Clause",
   "devDependencies": {
     "webpack": "~1.12.12",
