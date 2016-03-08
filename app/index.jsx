@@ -15,4 +15,4 @@ const appRouter = (
   </Router>
 );
 
-ReactDOM.render(appRouter, document.getElementById('app'))
+ReactDOM.render(appRouter, document.getElementById('app'));

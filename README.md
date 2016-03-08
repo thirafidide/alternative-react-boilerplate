@@ -1,5 +1,7 @@
 Alt(ernative) React Boilerplate
 ================================
+[![Build Status](https://travis-ci.org/iamn00b/alternative-react-boilerplate.svg?branch=master)](https://travis-ci.org/iamn00b/alternative-react-boilerplate)
+
 An alt(ernative)-react boilerplate for webpack-babel-react-alt combo. 
 This is heavily based on [SurviveJS](https://survivejs.com) book written by @bebraw.
 
