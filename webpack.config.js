@@ -1,22 +1,22 @@
-import path from 'path';
-import webpack from 'webpack';
-import merge from 'webpack-merge';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+var path = require('path');
+var webpack = require('webpack');
+var merge = require('webpack-merge');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
-import pkg from './package.json';
+var pkg = require('./package.json');
 
-import es6promise from 'es6-promise';
+var es6promise = require('es6-promise');
 es6promise.polyfill();
 
-const TARGET = process.env.npm_lifecycle_event;
+var TARGET = process.env.npm_lifecycle_event;
 process.env.BABEL_ENV = TARGET;
 
-const PATHS = {
+var PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build')
 };
 
-const common = {
+var common = {
   entry: {
     app: PATHS.app
   },
@@ -59,7 +59,7 @@ const common = {
   ]
 };
 
-const devConfiguration = {
+var devConfiguration = {
   devServer: {
     contentBase: PATHS.build,
 
@@ -83,7 +83,7 @@ const devConfiguration = {
   ]
 };
 
-const prodConfiguration = {
+var prodConfiguration = {
   entry: {
     vendor: Object.keys(pkg.dependencies).filter(function(v) {
       // Exclude alt-utils as it won't work with this setup
