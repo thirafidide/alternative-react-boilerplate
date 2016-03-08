@@ -7,7 +7,7 @@
     "test": "karma start",
     "build": "rm -rf ./build/ | webpack",
     "start": "webpack-dev-server",
-    "lint": "eslint . --ext .js --ext .jsx"
+    "lint": "eslint . --ext .js --ext .jsx",
   },
   "author": "Thirafi Dide",
   "license": "BSD-2-Clause",
