@@ -5,7 +5,7 @@ module.exports = function (config) {
 
     browsers: [process.env.CI ? 'PhantomJS' : 'Chrome'],
 
-    singleRun: !!process.env.CI,
+    singleRun: true,
 
     frameworks: [ 'mocha' ],
 

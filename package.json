@@ -7,13 +7,16 @@
     "test": "karma start",
     "build": "rm -rf ./build/ | webpack",
     "start": "webpack-dev-server",
-    "lint": "eslint . --ext .js --ext .jsx"
+    "lint": "eslint . --ext .js --ext .jsx",
+    "coverage": "babel-istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec",
+    "nyc-coverage": "nyc npm test"
   },
   "author": "Thirafi Dide",
   "license": "BSD-2-Clause",
   "devDependencies": {
     "babel-core": "~6.4.5",
     "babel-eslint": "~4.1.8",
+    "babel-istanbul": "^0.7.0",
     "babel-loader": "~6.2.1",
     "babel-preset-es2015": "~6.3.13",
     "babel-preset-react": "~6.3.13",
@@ -40,6 +43,7 @@
     "karma-webpack": "^1.7.0",
     "mocha": "^2.4.5",
     "mocha-lcov-reporter": "^1.2.0",
+    "nyc": "^6.1.1",
     "phantomjs": "^2.1.3",
     "phantomjs-polyfill": "0.0.2",
     "phantomjs-prebuilt": "^2.1.5",
