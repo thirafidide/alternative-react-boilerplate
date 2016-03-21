@@ -3,7 +3,7 @@ var webpack = require('webpack');
 module.exports = function (config) {
   config.set({
 
-    browsers: ['PhantomJS'],
+    browsers: [process.env.CI ? 'PhantomJS' : 'Chrome'],
 
     singleRun: !!process.env.CI,
 
@@ -24,6 +24,7 @@ module.exports = function (config) {
       require('karma-webpack'),
       require('karma-mocha'),
       require('karma-mocha-reporter'),
+      require('karma-chrome-launcher'),
       require('karma-phantomjs-launcher'),
       require('karma-sourcemap-loader')
     ],
