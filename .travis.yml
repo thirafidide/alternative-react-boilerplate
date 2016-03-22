@@ -14,4 +14,4 @@ before_script:
 script: "npm test && npm run lint"
 
 after_script: 
-  - nyc npm test && nyc report --reporter=text-lcov | coveralls
+  - nyc --extension .jsx --extension .es6 npm test && nyc report --reporter=text-lcov | coveralls

@@ -8,8 +8,8 @@
     "build": "rm -rf ./build/ | webpack",
     "start": "webpack-dev-server",
     "lint": "eslint . --ext .js --ext .jsx",
-    "coverage": "babel-istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec",
-    "nyc-coverage": "nyc npm test"
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "nyc-coverage": "nyc --extension .jsx --extension .es6 npm test"
   },
   "author": "Thirafi Dide",
   "license": "BSD-2-Clause",
